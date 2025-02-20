@@ -800,3 +800,18 @@ exit();
 Sažetak promjena:
 Prikazivanje korisnika u HTML tablici s opcijama za uređivanje i brisanje.
 Izrada edit.php i delete.php za upravljanje korisnicima.
+
+Sažetak lekcija 13, 14 i 15
+✅ Lekcija 13: Kreiranje login forme i autentifikacija korisnika
+Dodali smo login.php koji omogućava prijavu korisnika putem emaila i lozinke.
+Koristimo pripremljene SQL izjave (prepared statements) za sigurnu provjeru korisnika.
+Ako su podaci ispravni, korisnik se preusmjerava na glavnu stranicu i postavlja mu se sesija.
+Ako podaci nisu ispravni, ispisuje se poruka o grešci.
+✅ Lekcija 14: Logout funkcionalnost
+Kreirali smo logout.php koji briše sesiju i preusmjerava korisnika na login stranicu.
+Koristimo session_destroy(); za odjavu korisnika.
+✅ Lekcija 15: Finalna provjera i sigurnosne nadogradnje
+Dodali smo config.php kako bi centralizirali baznu konekciju i olakšali upravljanje kodom.
+Provjerili smo SQL injekcije i validaciju korisničkih unosa.
+Postavili smo session_start(); u svim fajlovima gdje je potrebna sesija.
+Implementirali smo prikaz korisničkih podataka na stranici.

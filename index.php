@@ -1,6 +1,7 @@
 
     <?php
-    session_start();
+   session_start();
+   require_once "config.php";
 
     $servername = "localhost";
     $username = "root";
