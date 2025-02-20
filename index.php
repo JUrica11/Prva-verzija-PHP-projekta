@@ -92,10 +92,12 @@ mysqli_close($conn);
 </head>
 <body>
     <h1>Unos korisnika</h1>
-    <form method="POST" action="">
-    <input type="text" name="ime" placeholder="Ime" required>
-    <input type="text" name="prezime" placeholder="Prezime" required>
+    <form method="POST" action="login.php">
     <input type="email" name="email" placeholder="Email" required>
+    <input type="password" name="password" placeholder="Lozinka" required>
+    <input type="submit" value="Prijava">
+</form>
+
     <input type="submit" value="Dodaj korisnika">
 </form>
 
