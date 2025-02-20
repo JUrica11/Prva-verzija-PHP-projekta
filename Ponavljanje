@@ -1,0 +1,802 @@
+
+1️⃣ Što su varijable?
+Varijable u PHP-u koriste se za spremanje podataka. Svaka varijabla počinje sa znakom $ i može sadržavati različite tipove podataka (brojevi, tekst, nizovi itd.).
+
+✅Što trebaš zapamtiti iz ove lekcije?
+✅ Varijable u PHP-u počinju sa $ (npr. $ime).
+✅ PHP podržava različite tipove podataka:
+
+String ("tekst")
+Integer (25)
+Float (1200.50)
+Boolean (true / false)
+✅ echo se koristi za ispis podataka.
+✅ Možeš spajati tekst i varijable pomoću . (konkatenacija).
+#prva lekcija
+<?php
+//deklaracija varijabli
+
+$ime="Jurica"; //string
+$godine="25"; //integer-cijeli broj
+$placa="1200.50"; // float-decimalni
+$zaposlen= true;//boolean(true ili false)
+
+//0spis podataka
+
+echo "Ime: " . $ime . "<br>";
+echo "Godine".$godine."<br>";
+echo "Placa" .$placa. "<br>";
+echo "Zaposlen".($zaposlen ? "Da": "Ne"). "<br>"; // ($zaposlen ? "Da" : "Ne") – ako je $zaposlen true, prikazat će "Da", inače "Ne".
+
+?>
+
+1️⃣ Vrste operatora u PHP-u
+🔹 Aritmetički operatori (za rad s brojevima):
+
+Operator	Opis	Primjer ($a = 10, $b = 5)
++	Zbrajanje	$a + $b = 15
+-	Oduzimanje	$a - $b = 5
+*	Množenje	$a * $b = 50
+/	Dijeljenje	$a / $b = 2
+%	Modulo (ostatak)	$a % $b = 0
+🔹 Usporedni operatori (za provjeru vrijednosti):
+
+Operator	Opis	Primjer ($a = 10, $b = 5)
+==	Jednako	$a == $b // false
+!=	Nije jednako	$a != $b // true
+>	Veće od	$a > $b // true
+<	Manje od	$a < $b // false
+>=	Veće ili jednako	$a >= $b // true
+<=	Manje ili jednako	$a <= $b // false
+🔹 Logički operatori (koriste se u uvjetima):
+
+Operator	Opis	Primjer ($a = true, $b = false)
+&&	I (AND)	$a && $b // false
+`		`
+!	Negacija (NOT)	!$a // false
+
+#druga
+<?php
+
+$a = 10;
+$b = 5;
+
+echo "Zbroj: ".($a + $b) . "<br>";
+echo  "Razlika: ".($a - $b) . "<br>";
+echo   "Umnožak: ".($a * $b) . "<br>";
+echo    "Količnik: ".($a / $b) . "<br>";
+echo    "Ostatak: ".($a % $b) . "<br>";
+
+//usporedni operatori
+
+echo "Jesu li brojevi jednaki?" . ($a == $b ? "Da" : "Ne") . "<br>";
+echo "Je li A veće od B" .($a > $b ? "Da" : "Ne") . "<br>";
+
+//logički operatori
+$prijavljen = true;
+$admin = false;
+
+if($prijavljen && $admin){
+    echo "Dobrodošao, admin!<br>";
+} else{
+    echo "Nemaš administratorske ovlasti.<br>";
+}
+?>
+3️⃣ Što trebaš zapamtiti iz ove lekcije?
+✅ Aritmetički operatori omogućuju izvođenje matematičkih operacija.
+✅ Usporedni operatori koriste se za provjeru jednakosti i veličine brojeva.
+✅ Logički operatori koriste se za donošenje odluka u kodu (&&, ||, !).
+✅ Uvjetni izraz (if) omogućuje izvođenje različitih blokova koda ovisno o uvjetima.
+
+#Petlje
+Uvjetni izrazi
+Uvjetni izrazi koriste se za donošenje odluka u kodu. Na primjer, možeš provjeriti je li korisnik prijavljen ili ne.
+
+Primjer – Uvjetni izraz
+U svom index.php fajlu, dodaj sljedeći kod:
+
+<?php
+$prijavljen = true;
+
+if ($prijavljen) {
+    echo "Dobrodošao, korisniče!";
+} else {
+    echo "Molimo se prijavite.";
+}
+?>
+#for Petlja for se koristi kada znaš koliko puta želiš ponoviti blok koda.
+<?php
+echo "Brojevi od 1 do 5:<br>";
+for ($i = 1; $i <=5; $i++) {
+ echo $i . "<br>"; 
+}
+?>
+
+#while Petlja while se koristi kada želiš ponavljati dok je uvjet istinit.
+<?php
+
+$broj = 1;
+echo "Brojevi od 1 do 5:<br>";
+while ($broj <=5){
+    echo $broj . "<br>";
+    $broj++;
+}
+?>
+
+Što trebaš zapamtiti iz ove lekcije?
+✅ Uvjetni izrazi koriste se za donošenje odluka (if, else).
+✅ Petlja for se koristi kada znaš broj ponavljanja.
+✅ Petlja while se koristi kada ne znaš koliko će puta blok koda biti izvršen.
+✅ Uvijek je važno kontrolirati uvjete unutar petlji kako bi se spriječilo beskonačno ponavljanje.
+
+
+Lekcija 5: Nizovi i asocijativni nizovi
+U ovoj lekciji naučit ćeš kako koristiti nizove (arrays) i asocijativne nizove (associative arrays) u PHP-u.
+
+1️⃣ Što su nizovi?
+Nizovi su strukture podataka koje mogu sadržavati više vrijednosti. U PHP-u možeš definirati indeksne i asocijativne nizove.
+
+<?php
+//Primjer – Indeksni niz
+    $boje = array("crvena", "zelena", "plava");
+
+    echo "Prva boja: " . $boje[0] . "<br>"; //crvena
+    echo "Druga boja: " . $boje[1] . "<br>"; //zelena
+
+//Primjer – Asocijativni niz 
+    $osoba = array(
+        "ime" => "Marko",
+        "godine" => 25,
+        "grad" => "Zagreb"
+    );
+
+    echo "ime: " .$osoba["ime"] . "<br>"; //marko
+    echo "Grad: " .$osoba["grad"] . "<br>"; //Zagreb
+
+//Primjer – Iteracija kroz indeksni niz
+
+$fruits = array ("jabuka", "banana", "naranča");
+
+echo "Voće:<br>";
+foreach ($fruits as $voće){
+    echo $voće . "<br>";
+}
+
+//Primjer – Iteracija kroz asocijativni niz
+
+$osoba = array(
+    "ime" => "Marko",
+    "godine" => 25,
+    "grad" => "Zagreb"
+);
+
+echo "Osoba:<br>";
+foreach ($osoba as $ključ => $vrijednost){
+    echo $ključ . ":" . $vrijednost . "<br>";
+}
+
+//Lekcija 6: Funkcije
+Funkcije su blokovi koda koji obavljaju određeni zadatak. Omogućuju ponovnu upotrebu koda i poboljšavaju organizaciju.
+?>
+
+<?php
+//Primjer – Definiranje funkcije
+
+function pozdrav($ime){
+    return "Pozdrav," . $ime . "!";
+
+}
+//Pozivanje funkcije
+echo pozdrav("Marko") . "<br>";
+echo pozdrav("Ana") . "<br>";
+
+
+
+//Primjer – Funkcija s zadanim parametrima
+
+function pozdrav2($ime = "gost"){
+    return "Pozdrav, " . $ime . "!";
+
+}
+echo pozdrav2() . "<br>";
+echo pozdrav2("Ivan") . "<br>";
+
+//Primjer – Funkcija s povratnom vrijednošću return
+
+function zbroji($a,$b){
+    return $a + $b;
+}
+
+$rezultat = zbroji(5, 10);
+    echo "Zbroj: " .$rezultat . "<br>";
+
+?>
+
+Uključivanje PHP-a u HTML
+PHP se može umetnuti unutar HTML-a pomoću <?php ... ?> tagova.
+
+<!DOCTYPE html>
+<html lang="hr">
+    <head>
+        <meta charset="UTF-8">
+        <title> Moja prva PHP stranica</title>
+    </head>
+    <body>
+        <h1> Dobrodošli na moju stranicu!</h1>
+        <?php
+        echo "<p>Ovo je dinamički generiran sadržaj.</p>";
+        ?>
+    </body>
+</html>
+
+//Možeš koristiti PHP za generiranje različitih sadržaja ovisno o uvjetima.
+
+Primjer – Dinamički sadržaj
+
+<!DOCTYPE html>
+<html lang="hr">
+    <head>
+        <meta charset="UTF-8">
+        <title> Moja prva PHP stranica</title>
+    </head>
+    <body>
+        <h1> Dobrodošli!</h1>
+        <?php
+            $vrijeme = date("H");
+            if($vrijeme < 12){
+                echo "<p> Dobro jutro!</p>";
+            } else{
+                echo "<p>Dobar dan!</p>";
+            }
+        ?>
+    </body>
+
+3️⃣ Forme i obrada podataka
+PHP se često koristi za obradu podataka iz HTML formi.
+    <!DOCTYPE html>
+<html lang="hr">
+    <head>
+        <meta charset="UTF-8">
+        <title> Moja prva PHP stranica</title>
+    </head>
+    <body>
+        <h1> Unesi svoje ime!</h1>
+        <form method="POST" action="">
+            <input type="text" name ="ime" required>
+            <input type="submit" value="Pošalji">
+        </form>
+
+        <?php
+            if ($_SERVER["REQUEST_METHOD"] == "POST"){
+                $ime = htmlspecialchars($_POST[$ime]);
+                echo "<p>Pozdrav, . $ime . !</p>";
+            }
+        ?>
+    </body>
+</html>
+
+4️⃣ Što trebaš zapamtiti iz ove lekcije?
+✅ Možeš kombinirati PHP i HTML za dinamičko generiranje sadržaja.
+✅ PHP može obraditi HTML forme i prikazati podatke na stranici.
+✅ htmlspecialchars() se koristi za zaštitu od XSS napada (označavanje posebnih znakova).
+
+
+Lekcija 8: Kreiranje Web Aplikacije
+Cilj lekcije:
+Stvoriti jednostavnu web aplikaciju koja omogućuje unos i pregled korisničkih podataka koristeći PHP i MySQL.
+
+Koraci:
+Povezivanje s bazom podataka:
+
+U index.php, koristi mysqli_connect() za uspostavljanje veze s MySQL bazom podataka.
+Forma za unos podataka:
+
+Kreiraj HTML formu koja traži ime i email korisnika.
+Umetanje podataka:
+
+Nakon slanja forme (POST metoda), koristi mysqli_query() za umetanje podataka u tabelu korisnici.
+Dohvaćanje podataka:
+
+Izvrši SELECT upit kako bi dobio sve korisnike iz tabele korisnici i prikaži ih na stranici.
+
+<?php
+$servername = "localhost";
+$username = "root"; // Prema zadanim postavkama, XAMPP koristi "root" bez lozinke
+$password = "";
+$dbname = "moja_baza"; // Promijeni prema svojoj bazi
+
+// Kreiraj vezu
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+// Provjera veze
+if (!$conn) {
+    die("Veza nije uspjela: " . mysqli_connect_error());
+}
+echo "Uspješno povezano!";
+?>
+
+//
+
+<?php
+$sql = "SELECT * FROM korisnici";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+    // Ispiši podatke za svaki redak
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "Ime: " . $row["ime"] . ", Email: " . $row["email"] . "<br>";
+    }
+} else {
+    echo "Nema rezultata.";
+}
+
+mysqli_close($conn); // Zatvori vezu
+
+//
+<?php
+$ime = "Ana";
+$email = "ana@example.com";
+
+$sql = "INSERT INTO korisnici (ime, email) VALUES ('$ime', '$email')";
+
+if (mysqli_query($conn, $sql)) {
+    echo "Novi zapis je uspješno umetnut.";
+} else {
+    echo "Greška: " . $sql . "<br>" . mysqli_error($conn);
+}
+
+mysqli_close($conn);
+?>
+ MySQL je sustav za upravljanje bazama podataka.
+✅ Koristi mysqli_connect() za povezivanje s bazom podataka.
+✅ SQL upiti se koriste za dohvaćanje, umetanje, ažuriranje i brisanje podataka.
+
+
+
+Lekcija 9: Izrada Složenije Stranice
+Cilj lekcije:
+Povezati znanje o PHP-u i MySQL-u kako bismo stvorili složeniju web aplikaciju.
+
+Koraci:
+Kreiranje baze podataka i tabele:
+
+U phpMyAdmin, kreiraj bazu podataka moj_projekt.
+Kreiraj tabelu korisnici sa sljedećim kolonama:
+id (INT, AUTO_INCREMENT, PRIMARY KEY)
+ime (VARCHAR)
+email (VARCHAR)
+Kreiranje index.php:
+
+Kreiraj index.php i dodaj HTML formu za unos korisnika (ime i email).
+PHP kod:
+
+Poveži se s bazom podataka.
+Nakon slanja forme, umetni unesene podatke u tabelu korisnici.
+Dohvati i prikaži sve korisnike iz tabele.
+
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>Moja Web Aplikacija</title>
+</head>
+<body>
+    <h1>Unos korisnika</h1>
+    <form method="POST" action="">
+        <input type="text" name="ime" placeholder="Ime" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="submit" value="Dodaj korisnika">
+    </form>
+
+    <?php
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "moj_projekt";
+
+    // Povezivanje s bazom
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+    // Provjera veze
+    if (!$conn) {
+        die("Veza nije uspjela: " . mysqli_connect_error());
+    }
+
+    // Umetanje podataka
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $ime = htmlspecialchars($_POST["ime"]);
+        $email = htmlspecialchars($_POST["email"]);
+
+        $sql = "INSERT INTO korisnici (ime, email) VALUES ('$ime', '$email')";
+        if (mysqli_query($conn, $sql)) {
+            echo "Novi korisnik je uspješno dodan.";
+        } else {
+            echo "Greška: " . $sql . "<br>" . mysqli_error($conn);
+        }
+    }
+
+    // Dohvaćanje i prikazivanje podataka
+    $sql = "SELECT * FROM korisnici";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        echo "<h2>Popis korisnika:</h2><ul>";
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<li>" . $row["ime"] . " - " . $row["email"] . "</li>";
+        }
+        echo "</ul>";
+    } else {
+        echo "Nema korisnika.";
+    }
+
+    mysqli_close($conn); // Zatvori vezu
+    ?>
+</body>
+</html>
+
+Ključne točke za zapamtiti:
+Povezivanje s MySQL-om koristeći mysqli_connect().
+Umetanje podataka u tabelu koristeći INSERT upit.
+Dohvaćanje podataka iz tabele koristeći SELECT upit i prikazivanje rezultata.
+
+Lekcija 10: Rad s formama, validacija i sigurnost
+Cilj lekcije:
+Naučiti kako raditi s HTML formama, provjeravati i validirati korisničke unose te osigurati aplikaciju protiv potencijalnih sigurnosnih prijetnji.
+
+Koraci:
+1. Kreiranje HTML forme
+Možeš proširiti svoju postojeću formu tako da dodaješ dodatna polja, npr. za prezime ili broj telefona.
+2. Validacija podataka
+Validiraj korisničke ulaze kako bi osigurao da su podaci ispravni i u željenom formatu.
+Možeš koristiti filter_var() za provjeru email adresa i drugih tipova podataka.
+3. Zaštita od SQL injekcija
+Koristi pripremljene izjave (prepared statements) kako bi se zaštitio od SQL injekcija, umjesto da direktno umetneš korisničke unose u SQL upite.
+4. Primjer koda:
+Prošireni index.php:
+php
+Copy
+Edit
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>Moja Web Aplikacija</title>
+</head>
+<body>
+    <h1>Unos korisnika</h1>
+    <form method="POST" action="">
+        <input type="text" name="ime" placeholder="Ime" required>
+        <input type="text" name="prezime" placeholder="Prezime" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="submit" value="Dodaj korisnika">
+    </form>
+
+    <?php
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "moj_projekt";
+
+    // Povezivanje s bazom
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+    // Provjera veze
+    if (!$conn) {
+        die("Veza nije uspjela: " . mysqli_connect_error());
+    }
+
+    // Umetanje podataka
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $ime = htmlspecialchars($_POST["ime"]);
+        $prezime = htmlspecialchars($_POST["prezime"]);
+        $email = htmlspecialchars($_POST["email"]);
+
+        // Validacija email adrese
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo "Neispravna email adresa.";
+        } else {
+            // Pripremljena izjava za umetanje
+            $stmt = $conn->prepare("INSERT INTO korisnici (ime, prezime, email) VALUES (?, ?, ?)");
+            $stmt->bind_param("sss", $ime, $prezime, $email);
+
+            if ($stmt->execute()) {
+                echo "Novi korisnik je uspješno dodan.";
+            } else {
+                echo "Greška: " . $stmt->error;
+            }
+
+            $stmt->close(); // Zatvori pripremljenu izjavu
+        }
+    }
+
+    // Dohvaćanje i prikazivanje podataka
+    $sql = "SELECT * FROM korisnici";
+    $result = mysqli_query($conn, $sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        echo "<h2>Popis korisnika:</h2><ul>";
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<li>" . $row["ime"] . " " . $row["prezime"] . " - " . $row["email"] . "</li>";
+        }
+        echo "</ul>";
+    } else {
+        echo "Nema korisnika.";
+    }
+
+    mysqli_close($conn); // Zatvori vezu
+    ?>
+</body>
+</html>
+Ključne točke za zapamtiti:
+Validacija podataka osigurava da su korisnički unosi ispravni.
+filter_var() se koristi za provjeru email adresa i drugih tipova podataka.
+Pripremljene izjave štite od SQL injekcija.
+
+
+Lekcija 11: Napredno korištenje formi i upravljanje sesijama
+Ova lekcija će se fokusirati na:
+
+Upravljanje sesijama za korisničke prijave.
+Prikazivanje poruka o uspješnom dodavanju korisnika.
+Rukovanje greškama i poboljšanje korisničkog iskustva.
+Koraci:
+1. Upravljanje sesijama
+U PHP-u možeš koristiti sesije kako bi pohranio informacije o korisnicima koji su se prijavili ili izvršili određene radnje.
+
+2. Kod za upravljanje sesijama:
+Na vrhu svog index.php dodaj sljedeće:
+
+php
+Copy
+Edit
+session_start(); // Pokretanje sesije
+3. Prikazivanje poruka
+Možeš koristiti sesije za prikazivanje poruka korisnicima:
+
+php
+Copy
+Edit
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Tvoj kod za unos podataka
+
+    if ($stmt->execute()) {
+        $_SESSION['message'] = "Novi korisnik je uspješno dodan."; // Spremanje poruke u sesiju
+        header("Location: index.php"); // Preusmjeri na istu stranicu
+        exit();
+    }
+}
+4. Prikazivanje poruka na stranici:
+Ispod forme dodaj kod za prikaz poruka:
+
+php
+Copy
+Edit
+if (isset($_SESSION['message'])) {
+    echo "<p>" . $_SESSION['message'] . "</p>";
+    unset($_SESSION['message']); // Uklanjanje poruke nakon prikaza
+}
+5. Cjelokupan ažurirani index.php:
+Evo kako bi trebao izgledati tvoj ažurirani kod:
+
+php
+Copy
+Edit
+<?php
+session_start(); // Pokretanje sesije
+
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "moj_projekt";
+
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+if (!$conn) {
+    die("Veza nije uspjela: " . mysqli_connect_error());
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $ime = htmlspecialchars($_POST["ime"]);
+    $prezime = isset($_POST["prezime"]) ? htmlspecialchars($_POST["prezime"]) : '';
+    $email = htmlspecialchars($_POST["email"]);
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "Neispravna email adresa.";
+    } else {
+        $stmt = $conn->prepare("INSERT INTO korisnici (ime, prezime, email) VALUES (?, ?, ?)");
+        if (!$stmt) {
+            echo "Greška u pripremi izjave: " . $conn->error;
+            exit();
+        }
+        
+        $stmt->bind_param("sss", $ime, $prezime, $email);
+
+        if ($stmt->execute()) {
+            $_SESSION['message'] = "Novi korisnik je uspješno dodan."; // Spremanje poruke u sesiju
+            header("Location: index.php"); // Preusmjeri na istu stranicu
+            exit();
+        } else {
+            echo "Greška: " . $stmt->error;
+        }
+
+        $stmt->close();
+    }
+}
+
+// Prikazivanje poruka
+if (isset($_SESSION['message'])) {
+    echo "<p>" . $_SESSION['message'] . "</p>";
+    unset($_SESSION['message']);
+}
+
+$sql = "SELECT * FROM korisnici";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+    echo "<h2>Popis korisnika:</h2><ul>";
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "<li>" . $row["ime"] . " " . $row["prezime"] . " - " . $row["email"] . "</li>";
+    }
+    echo "</ul>";
+} else {
+    echo "Nema korisnika.";
+}
+
+mysqli_close($conn);
+?>
+
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>Moja Web Aplikacija</title>
+</head>
+<body>
+    <h1>Unos korisnika</h1>
+    <form method="POST" action="">
+        <input type="text" name="ime" placeholder="Ime" required>
+        <input type="text" name="prezime" placeholder="Prezime" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input type="submit" value="Dodaj korisnika">
+    </form>
+</body>
+</html>
+Ključne točke za zapamtiti:
+session_start() se koristi za pokretanje sesije.
+Poruke se mogu spremati u sesije i prikazivati na stranici.
+header("Location: index.php") se koristi za preusmjeravanje nakon uspješnog unosa.
+
+
+Lekcija 12: Izdvajanje podataka i prikazivanje
+Sada kada imamo osnovnu funkcionalnost za unos korisnika, možemo se usredotočiti na dodatne funkcionalnosti, poput:
+
+Prikazivanja korisničkih podataka u tablici.
+Dodavanje mogućnosti za brisanje ili uređivanje korisnika.
+1. Prikazivanje podataka u tablici:
+Evo kako možeš prikazati korisničke podatke u HTML tablici:
+
+php
+Copy
+Edit
+if (mysqli_num_rows($result) > 0) {
+    echo "<h2>Popis korisnika:</h2>";
+    echo "<table border='1'>
+            <tr>
+                <th>Ime</th>
+                <th>Prezime</th>
+                <th>Email</th>
+                <th>Akcija</th>
+            </tr>";
+    while ($row = mysqli_fetch_assoc($result)) {
+        echo "<tr>
+                <td>" . $row["ime"] . "</td>
+                <td>" . $row["prezime"] . "</td>
+                <td>" . $row["email"] . "</td>
+                <td>
+                    <a href='edit.php?id=" . $row["id"] . "'>Uredi</a> | 
+                    <a href='delete.php?id=" . $row["id"] . "' onclick=\"return confirm('Jeste li sigurni da želite obrisati ovog korisnika?');\">Obriši</a>
+                </td>
+              </tr>";
+    }
+    echo "</table>";
+} else {
+    echo "Nema korisnika.";
+}
+**2. Dodavanje opcije za uređivanje i brisanje
+Kako bi omogućio uređivanje i brisanje korisnika, trebat ćeš stvoriti dva nova PHP fajla: edit.php i delete.php.
+
+A. edit.php
+Ovaj fajl će omogućiti uređivanje postojećeg korisnika. Evo kako bi mogao izgledati:
+
+php
+Copy
+Edit
+<?php
+session_start();
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "moj_projekt";
+
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+if (!$conn) {
+    die("Veza nije uspjela: " . mysqli_connect_error());
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $id = $_POST["id"];
+    $ime = htmlspecialchars($_POST["ime"]);
+    $prezime = htmlspecialchars($_POST["prezime"]);
+    $email = htmlspecialchars($_POST["email"]);
+
+    $stmt = $conn->prepare("UPDATE korisnici SET ime=?, prezime=?, email=? WHERE id=?");
+    $stmt->bind_param("sssi", $ime, $prezime, $email, $id);
+
+    if ($stmt->execute()) {
+        $_SESSION['message'] = "Korisnik je uspješno ažuriran.";
+        header("Location: index.php");
+        exit();
+    } else {
+        echo "Greška: " . $stmt->error;
+    }
+}
+
+$id = $_GET['id'];
+$result = mysqli_query($conn, "SELECT * FROM korisnici WHERE id=$id");
+$user = mysqli_fetch_assoc($result);
+?>
+
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>Uredi korisnika</title>
+</head>
+<body>
+    <h1>Uredi korisnika</h1>
+    <form method="POST" action="">
+        <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
+        <input type="text" name="ime" placeholder="Ime" value="<?php echo $user['ime']; ?>" required>
+        <input type="text" name="prezime" placeholder="Prezime" value="<?php echo $user['prezime']; ?>" required>
+        <input type="email" name="email" placeholder="Email" value="<?php echo $user['email']; ?>" required>
+        <input type="submit" value="Ažuriraj korisnika">
+    </form>
+</body>
+</html>
+B. delete.php
+Ovaj fajl će brisati korisnika iz baze:
+
+php
+Copy
+Edit
+<?php
+session_start();
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "moj_projekt";
+
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+if (!$conn) {
+    die("Veza nije uspjela: " . mysqli_connect_error());
+}
+
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $stmt = $conn->prepare("DELETE FROM korisnici WHERE id=?");
+    $stmt->bind_param("i", $id);
+
+    if ($stmt->execute()) {
+        $_SESSION['message'] = "Korisnik je uspješno obrisan.";
+    } else {
+        echo "Greška: " . $stmt->error;
+    }
+}
+
+header("Location: index.php");
+exit();
+Sažetak promjena:
+Prikazivanje korisnika u HTML tablici s opcijama za uređivanje i brisanje.
+Izrada edit.php i delete.php za upravljanje korisnicima.
